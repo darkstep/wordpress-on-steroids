@@ -1153,6 +1153,8 @@
             }
         }
     </style>
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
     <!-- Header with Logo -->
@@ -1793,7 +1795,16 @@
             });
         });
 
-        // Contact Form Handling
+        // Contact Form Handling with EmailJS
+        const EMAILJS_SERVICE_ID = 'service_yujul1k';
+        const EMAILJS_TEMPLATE_ID = 'template_k8icd58';
+        const EMAILJS_PUBLIC_KEY = 'PvfmM57-5e8m8oE_X';
+        
+        // Initialize EmailJS
+        (function() {
+            emailjs.init(EMAILJS_PUBLIC_KEY);
+        })();
+        
         const contactForm = document.getElementById('contactForm');
         const formMessage = document.getElementById('formMessage');
 
@@ -1811,7 +1822,7 @@
             formMessage.style.display = 'none';
 
             try {
-                // Send form data to Node.js backend
+                // Validate service selection
                 const checkedUpgrades = Array.from(upgradeCheckboxes)
                     .filter(cb => cb.checked)
                     .map(cb => cb.value);
@@ -1823,30 +1834,28 @@
                     return;
                 }
                 
-                const formDataObj = {
-                    name: formData.get('name'),
-                    email: formData.get('email'),
-                    website: formData.get('website'),
-                    upgrade: checkedUpgrades,
-                    message: formData.get('message')
+                // Prepare template parameters for EmailJS
+                const templateParams = {
+                    from_name: formData.get('name'),
+                    from_email: formData.get('email'),
+                    website: formData.get('website') || 'Not provided',
+                    services: checkedUpgrades.join(', '),
+                    message: formData.get('message'),
+                    subject: `New Contact: ${checkedUpgrades.length} Service(s) Selected`
                 };
 
-                const response = await fetch('/api/contact', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(formDataObj)
-                });
+                // Send email using EmailJS
+                await emailjs.send(
+                    EMAILJS_SERVICE_ID,
+                    EMAILJS_TEMPLATE_ID,
+                    templateParams
+                );
 
-                const result = await response.json();
-
-                if (response.ok && result.success) {
-                    showMessage('Thank you! Your message has been sent successfully. I\'ll get back to you soon.', 'success');
-                    contactForm.reset();
-                } else {
-                    throw new Error(result.error || 'Failed to send message');
-                }
+                showMessage('Thank you! Your message has been sent successfully. I\'ll get back to you soon.', 'success');
+                contactForm.reset();
+                // Reset checkboxes
+                upgradeCheckboxes.forEach(cb => cb.checked = false);
+                updateSelectedText();
 
             } catch (error) {
                 console.error('Form submission error:', error);

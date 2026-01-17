@@ -142,8 +142,9 @@ app.get('/', (req, res) => {
 });
 
 // Start server
-app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
+// Listen on 0.0.0.0 to accept connections from any network interface (important for hosting)
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`🚀 Server running on http://0.0.0.0:${PORT}`);
     console.log(`📧 Email service: ${process.env.EMAIL_SERVICE || 'gmail'}`);
     console.log(`📬 Receiving emails at: ${process.env.RECEIVER_EMAIL || process.env.EMAIL_USER}`);
 });
