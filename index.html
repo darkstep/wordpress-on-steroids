@@ -1536,7 +1536,7 @@
 
                 <div class="form-group">
                     <label for="website">Your Website (optional)</label>
-                    <input type="url" id="website" name="website" placeholder="https://yoursite.com">
+                    <input type="text" id="website" name="website" placeholder="https://yoursite.com">
                 </div>
 
                 <div class="form-group">
@@ -1834,12 +1834,48 @@
                     return;
                 }
                 
+                // Price mapping for all services
+                const servicePrices = {
+                    'Performance Boost': '125 € / 244.48 лв',
+                    'Visibility & Discovery': '100 € / 195.58 лв',
+                    'Commerce & Payments': '200 € / 391.17 лв',
+                    'Logistics & Automation': '150 € / 293.37 лв',
+                    'Security & Protection': '100 € / 195.58 лв',
+                    'Conversion Optimization': '150 € / 293.37 лв',
+                    'Website Migration': '200 € / 391.17 лв',
+                    'Site Audit & Recommendations': '50 € / 97.79 лв',
+                    'Bug Fixing': '40 € / 78.23 лв',
+                    'WooCommerce Setup': '250 € / 488.96 лв',
+                    'Website Redesign/Refresh': '300 € / 586.75 лв',
+                    'WordPress Website Creation': '500 € / 977.92 лв',
+                    'Other': 'Custom quote'
+                };
+                
+                // Format services with prices
+                const servicesWithPrices = checkedUpgrades.map(service => {
+                    const price = servicePrices[service] || 'Price on request';
+                    return `${service} - ${price}`;
+                }).join('\n');
+                
+                // Calculate total price (excluding "Other")
+                const totalPrice = checkedUpgrades
+                    .filter(service => service !== 'Other')
+                    .reduce((total, service) => {
+                        const priceStr = servicePrices[service];
+                        if (priceStr && priceStr !== 'Custom quote') {
+                            const euroPrice = parseInt(priceStr.match(/(\d+)\s*€/)?.[1] || '0');
+                            return total + euroPrice;
+                        }
+                        return total;
+                    }, 0);
+                
                 // Prepare template parameters for EmailJS
                 const templateParams = {
                     from_name: formData.get('name'),
                     from_email: formData.get('email'),
                     website: formData.get('website') || 'Not provided',
-                    services: checkedUpgrades.join(', '),
+                    services: servicesWithPrices,
+                    total_price: totalPrice > 0 ? `${totalPrice} €` : 'N/A',
                     message: formData.get('message'),
                     subject: `New Contact: ${checkedUpgrades.length} Service(s) Selected`
                 };
