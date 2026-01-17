@@ -447,6 +447,51 @@
             padding-left: 16px;
         }
 
+        .upgrade-price {
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .upgrade-price-amount {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--electric-purple);
+            margin-bottom: 4px;
+        }
+
+        .upgrade-price-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .upgrade-request-btn {
+            width: 100%;
+            margin-top: 20px;
+            padding: 14px 24px;
+            background: linear-gradient(135deg, var(--electric-purple) 0%, var(--purple-glow) 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .upgrade-request-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(139, 92, 246, 0.6);
+        }
+
+        .upgrade-request-btn:active {
+            transform: translateY(0);
+        }
+
         /* Done-For-You Section */
         .done-for-you {
             background: linear-gradient(135deg, var(--charcoal) 0%, var(--black) 100%);
@@ -624,7 +669,8 @@
         }
 
         .form-group input,
-        .form-group textarea {
+        .form-group textarea,
+        .form-group select {
             width: 100%;
             padding: 14px 18px;
             background: var(--charcoal);
@@ -636,8 +682,23 @@
             transition: all 0.3s ease;
         }
 
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238b5cf6' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 18px center;
+            padding-right: 45px;
+        }
+
+        .form-group select option {
+            background: var(--charcoal);
+            color: var(--text-light);
+        }
+
         .form-group input:focus,
-        .form-group textarea:focus {
+        .form-group textarea:focus,
+        .form-group select:focus {
             outline: none;
             border-color: var(--electric-purple);
             box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
@@ -803,7 +864,7 @@
             <nav>
                 <a href="#hero">Home</a>
                 <a href="#upgrades">Upgrades</a>
-                <a href="#done-for-you">Services</a>
+                <a href="#done-for-you">How it works</a>
                 <a href="#contact-form">Contact</a>
             </nav>
         </div>
@@ -838,6 +899,11 @@
                     <div class="upgrade-benefit">
                         <strong>Result:</strong> Faster load times mean lower bounce rates and higher conversions.
                     </div>
+                    <div class="upgrade-price">
+                        <div class="upgrade-price-amount">$299</div>
+                        <div class="upgrade-price-label">One-time setup</div>
+                    </div>
+                    <button class="upgrade-request-btn" data-upgrade="Performance Boost">Request</button>
                 </div>
 
                 <!-- Visibility Upgrade -->
@@ -853,6 +919,11 @@
                     <div class="upgrade-benefit">
                         <strong>Result:</strong> Track what works, fix what doesn't, and rank higher in search results.
                     </div>
+                    <div class="upgrade-price">
+                        <div class="upgrade-price-amount">$249</div>
+                        <div class="upgrade-price-label">One-time setup</div>
+                    </div>
+                    <button class="upgrade-request-btn" data-upgrade="Visibility & Discovery">Request</button>
                 </div>
 
                 <!-- Commerce Upgrade -->
@@ -868,6 +939,11 @@
                     <div class="upgrade-benefit">
                         <strong>Result:</strong> Reduce cart abandonment and start accepting payments like a pro.
                     </div>
+                    <div class="upgrade-price">
+                        <div class="upgrade-price-amount">$399</div>
+                        <div class="upgrade-price-label">One-time setup</div>
+                    </div>
+                    <button class="upgrade-request-btn" data-upgrade="Commerce & Payments">Request</button>
                 </div>
 
                 <!-- Logistics Upgrade -->
@@ -883,6 +959,11 @@
                     <div class="upgrade-benefit">
                         <strong>Result:</strong> Save hours every week and eliminate manual shipping errors.
                     </div>
+                    <div class="upgrade-price">
+                        <div class="upgrade-price-amount">$449</div>
+                        <div class="upgrade-price-label">One-time setup</div>
+                    </div>
+                    <button class="upgrade-request-btn" data-upgrade="Logistics & Automation">Request</button>
                 </div>
 
                 <!-- Security Upgrade -->
@@ -898,6 +979,11 @@
                     <div class="upgrade-benefit">
                         <strong>Result:</strong> Sleep easy knowing your site is protected from hackers and data loss.
                     </div>
+                    <div class="upgrade-price">
+                        <div class="upgrade-price-amount">$199</div>
+                        <div class="upgrade-price-label">One-time setup</div>
+                    </div>
+                    <button class="upgrade-request-btn" data-upgrade="Security & Protection">Request</button>
                 </div>
 
                 <!-- Conversion Optimization -->
@@ -913,6 +999,11 @@
                     <div class="upgrade-benefit">
                         <strong>Result:</strong> Turn more traffic into sales with a site that guides visitors to action.
                     </div>
+                    <div class="upgrade-price">
+                        <div class="upgrade-price-amount">$349</div>
+                        <div class="upgrade-price-label">One-time setup</div>
+                    </div>
+                    <button class="upgrade-request-btn" data-upgrade="Conversion Optimization">Request</button>
                 </div>
             </div>
         </div>
@@ -975,6 +1066,20 @@
                 <div class="form-group">
                     <label for="website">Your Website (optional)</label>
                     <input type="url" id="website" name="website" placeholder="https://yoursite.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="upgrade">I'm Interested In *</label>
+                    <select id="upgrade" name="upgrade" required>
+                        <option value="">Select an upgrade...</option>
+                        <option value="Performance Boost">Performance Boost - $299</option>
+                        <option value="Visibility & Discovery">Visibility & Discovery - $249</option>
+                        <option value="Commerce & Payments">Commerce & Payments - $399</option>
+                        <option value="Logistics & Automation">Logistics & Automation - $449</option>
+                        <option value="Security & Protection">Security & Protection - $199</option>
+                        <option value="Conversion Optimization">Conversion Optimization - $349</option>
+                        <option value="Other">Other</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
@@ -1043,6 +1148,40 @@
         window.addEventListener('scroll', updateActiveNav);
         updateActiveNav(); // Set initial active state
 
+        // Handle Request buttons on upgrade cards
+        document.querySelectorAll('.upgrade-request-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const upgradeName = this.getAttribute('data-upgrade');
+                const contactForm = document.getElementById('contact-form');
+                const upgradeSelect = document.getElementById('upgrade');
+                
+                // Scroll to contact form
+                const headerOffset = 80;
+                const elementPosition = contactForm.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+
+                // Preselect the upgrade after a short delay (to ensure form is visible)
+                setTimeout(() => {
+                    if (upgradeSelect) {
+                        upgradeSelect.value = upgradeName;
+                        // Trigger focus for better UX
+                        upgradeSelect.focus();
+                        // Add a subtle highlight effect
+                        upgradeSelect.style.borderColor = 'var(--electric-purple)';
+                        upgradeSelect.style.boxShadow = '0 0 0 3px rgba(139, 92, 246, 0.3)';
+                        setTimeout(() => {
+                            upgradeSelect.style.boxShadow = '';
+                        }, 2000);
+                    }
+                }, 500);
+            });
+        });
+
         // Contact Form Handling
         const contactForm = document.getElementById('contactForm');
         const formMessage = document.getElementById('formMessage');
@@ -1066,6 +1205,7 @@
                     name: formData.get('name'),
                     email: formData.get('email'),
                     website: formData.get('website'),
+                    upgrade: formData.get('upgrade'),
                     message: formData.get('message')
                 };
 
@@ -1110,6 +1250,33 @@
                 }, 5000);
             }
         }
+
+        // Handle URL parameters for preselected upgrade
+        window.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const upgradeParam = urlParams.get('upgrade');
+            const upgradeSelect = document.getElementById('upgrade');
+            
+            if (upgradeParam && upgradeSelect) {
+                // Decode the upgrade name (in case it has special characters)
+                const decodedUpgrade = decodeURIComponent(upgradeParam);
+                upgradeSelect.value = decodedUpgrade;
+                
+                // Scroll to form if upgrade is preselected
+                if (upgradeSelect.value) {
+                    setTimeout(() => {
+                        const contactForm = document.getElementById('contact-form');
+                        const headerOffset = 80;
+                        const elementPosition = contactForm.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }, 300);
+                }
+            }
+        });
     </script>
 </body>
 </html>

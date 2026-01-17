@@ -43,13 +43,13 @@ const transporter = nodemailer.createTransport({
 // Contact form endpoint
 app.post('/api/contact', async (req, res) => {
     try {
-        const { name, email, website, message } = req.body;
+        const { name, email, website, upgrade, message } = req.body;
 
         // Validate required fields
-        if (!name || !email || !message) {
+        if (!name || !email || !upgrade || !message) {
             return res.status(400).json({ 
                 success: false, 
-                error: 'Name, email, and message are required' 
+                error: 'Name, email, upgrade selection, and message are required' 
             });
         }
 
@@ -67,7 +67,7 @@ app.post('/api/contact', async (req, res) => {
             from: `"WordPress on Steroids Contact" <${process.env.EMAIL_USER}>`,
             to: process.env.RECEIVER_EMAIL || process.env.EMAIL_USER,
             replyTo: email,
-            subject: `New Contact Form Submission from ${name}`,
+            subject: `New Contact Form Submission: ${upgrade}`,
             html: `
                 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
                     <h2 style="color: #8b5cf6;">New Contact Form Submission</h2>
@@ -75,6 +75,7 @@ app.post('/api/contact', async (req, res) => {
                         <p><strong>Name:</strong> ${name}</p>
                         <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
                         ${website ? `<p><strong>Website:</strong> <a href="${website}" target="_blank">${website}</a></p>` : ''}
+                        <p><strong>Interested In:</strong> <span style="color: #8b5cf6; font-weight: bold;">${upgrade}</span></p>
                     </div>
                     <div style="background: #ffffff; padding: 20px; border-left: 4px solid #8b5cf6; margin: 20px 0;">
                         <p><strong>Message:</strong></p>
@@ -88,6 +89,7 @@ New Contact Form Submission
 Name: ${name}
 Email: ${email}
 ${website ? `Website: ${website}` : ''}
+Interested In: ${upgrade}
 
 Message:
 ${message}
