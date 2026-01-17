@@ -46,10 +46,19 @@ app.post('/api/contact', async (req, res) => {
         const { name, email, website, upgrade, message } = req.body;
 
         // Validate required fields
-        if (!name || !email || !upgrade || !message) {
+        if (!name || !email || !message) {
             return res.status(400).json({ 
                 success: false, 
-                error: 'Name, email, upgrade selection, and message are required' 
+                error: 'Name, email, and message are required' 
+            });
+        }
+
+        // Validate upgrade selection (can be array or single value)
+        const upgrades = Array.isArray(upgrade) ? upgrade : (upgrade ? [upgrade] : []);
+        if (upgrades.length === 0) {
+            return res.status(400).json({ 
+                success: false, 
+                error: 'Please select at least one service or upgrade' 
             });
         }
 
@@ -62,12 +71,17 @@ app.post('/api/contact', async (req, res) => {
             });
         }
 
+        // Format upgrades for display
+        const upgradesList = upgrades.map(u => `• ${u}`).join('<br>');
+        const upgradesText = upgrades.join(', ');
+        const subjectUpgrade = upgrades.length === 1 ? upgrades[0] : `${upgrades.length} Services`;
+
         // Email content
         const mailOptions = {
             from: `"WordPress on Steroids Contact" <${process.env.EMAIL_USER}>`,
             to: process.env.RECEIVER_EMAIL || process.env.EMAIL_USER,
             replyTo: email,
-            subject: `New Contact Form Submission: ${upgrade}`,
+            subject: `New Contact Form Submission: ${subjectUpgrade}`,
             html: `
                 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
                     <h2 style="color: #8b5cf6;">New Contact Form Submission</h2>
@@ -75,7 +89,10 @@ app.post('/api/contact', async (req, res) => {
                         <p><strong>Name:</strong> ${name}</p>
                         <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
                         ${website ? `<p><strong>Website:</strong> <a href="${website}" target="_blank">${website}</a></p>` : ''}
-                        <p><strong>Interested In:</strong> <span style="color: #8b5cf6; font-weight: bold;">${upgrade}</span></p>
+                        <p><strong>Interested In (${upgrades.length}):</strong></p>
+                        <div style="color: #8b5cf6; font-weight: bold; margin-left: 10px; margin-top: 5px;">
+                            ${upgradesList}
+                        </div>
                     </div>
                     <div style="background: #ffffff; padding: 20px; border-left: 4px solid #8b5cf6; margin: 20px 0;">
                         <p><strong>Message:</strong></p>
@@ -89,7 +106,8 @@ New Contact Form Submission
 Name: ${name}
 Email: ${email}
 ${website ? `Website: ${website}` : ''}
-Interested In: ${upgrade}
+Interested In (${upgrades.length}):
+${upgrades.map(u => `  • ${u}`).join('\n')}
 
 Message:
 ${message}

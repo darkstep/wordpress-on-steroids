@@ -702,7 +702,7 @@
             transition: all 0.3s ease;
         }
 
-        .form-group select {
+        .form-group select:not([multiple]) {
             cursor: pointer;
             appearance: none;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238b5cf6' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
@@ -711,9 +711,20 @@
             padding-right: 45px;
         }
 
+        .form-group select[multiple] {
+            min-height: 150px;
+            padding: 10px;
+        }
+
         .form-group select option {
             background: var(--charcoal);
             color: var(--text-light);
+            padding: 8px 12px;
+        }
+
+        .form-group select option:checked {
+            background: var(--electric-purple);
+            color: white;
         }
 
         .form-group select optgroup {
@@ -728,6 +739,138 @@
             color: var(--text-light);
             font-weight: normal;
             padding-left: 20px;
+        }
+
+        /* Custom Checkbox Dropdown */
+        .custom-checkbox-dropdown {
+            position: relative;
+            width: 100%;
+        }
+
+        .dropdown-trigger {
+            width: 100%;
+            padding: 14px 18px;
+            background: var(--charcoal);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 8px;
+            color: var(--text-light);
+            font-size: 1rem;
+            font-family: inherit;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            min-height: 50px;
+        }
+
+        .dropdown-trigger:hover {
+            border-color: var(--electric-purple);
+        }
+
+        .dropdown-trigger.active {
+            border-color: var(--electric-purple);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+        }
+
+        .dropdown-placeholder {
+            color: var(--text-muted);
+        }
+
+        .dropdown-selected {
+            color: var(--text-light);
+            font-weight: 500;
+            display: none;
+        }
+
+        .dropdown-selected.has-selection {
+            display: inline;
+        }
+
+        .dropdown-arrow {
+            color: var(--electric-purple);
+            transition: transform 0.3s ease;
+            font-size: 0.8rem;
+        }
+
+        .dropdown-trigger.active .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: calc(100% + 5px);
+            left: 0;
+            right: 0;
+            background: var(--dark-grey);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 8px;
+            max-height: 400px;
+            overflow-y: auto;
+            z-index: 1000;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .dropdown-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .dropdown-content::-webkit-scrollbar-track {
+            background: var(--charcoal);
+            border-radius: 4px;
+        }
+
+        .dropdown-content::-webkit-scrollbar-thumb {
+            background: var(--electric-purple);
+            border-radius: 4px;
+        }
+
+        .dropdown-content::-webkit-scrollbar-thumb:hover {
+            background: var(--purple-glow);
+        }
+
+        .dropdown-content.show {
+            display: block;
+        }
+
+        .dropdown-group {
+            padding: 10px 0;
+        }
+
+        .dropdown-group-label {
+            padding: 10px 18px;
+            color: var(--electric-purple);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            padding: 12px 18px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            color: var(--text-light);
+        }
+
+        .checkbox-option:hover {
+            background: rgba(139, 92, 246, 0.1);
+        }
+
+        .checkbox-option input[type="checkbox"] {
+            margin-right: 12px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: var(--electric-purple);
+        }
+
+        .checkbox-option span {
+            flex: 1;
+            font-size: 0.95rem;
         }
 
         .form-group input:focus,
@@ -1225,25 +1368,71 @@
 
                 <div class="form-group">
                     <label for="upgrade">I'm Interested In *</label>
-                    <select id="upgrade" name="upgrade" required>
-                        <option value="">Select a service...</option>
-                        <optgroup label="Upgrades">
-                            <option value="Performance Boost">Performance Boost - 125 € / 244.48 лв</option>
-                            <option value="Visibility & Discovery">Visibility & Discovery - 100 € / 195.58 лв</option>
-                            <option value="Commerce & Payments">Commerce & Payments - 200 € / 391.17 лв</option>
-                            <option value="Logistics & Automation">Logistics & Automation - 150 € / 293.37 лв</option>
-                            <option value="Security & Protection">Security & Protection - 100 € / 195.58 лв</option>
-                            <option value="Conversion Optimization">Conversion Optimization - 150 € / 293.37 лв</option>
-                        </optgroup>
-                        <optgroup label="Additional Services">
-                            <option value="Website Migration">Website Migration - 200 € / 391.17 лв</option>
-                            <option value="Site Audit & Recommendations">Site Audit & Recommendations - 50 € / 97.79 лв</option>
-                            <option value="Bug Fixing">Bug Fixing - 40 € / 78.23 лв</option>
-                            <option value="WooCommerce Setup">WooCommerce Setup - 250 € / 488.96 лв</option>
-                            <option value="Website Redesign/Refresh">Website Redesign/Refresh - 300 € / 586.75 лв</option>
-                        </optgroup>
-                        <option value="Other">Other</option>
-                    </select>
+                    <div class="custom-checkbox-dropdown" id="upgradeDropdown">
+                        <div class="dropdown-trigger" id="upgradeTrigger">
+                            <span class="dropdown-placeholder">Select services...</span>
+                            <span class="dropdown-selected" id="upgradeSelected"></span>
+                            <span class="dropdown-arrow">▼</span>
+                        </div>
+                        <div class="dropdown-content" id="upgradeContent">
+                            <div class="dropdown-group">
+                                <div class="dropdown-group-label">Upgrades</div>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="upgrade" value="Performance Boost">
+                                    <span>Performance Boost - 125 € / 244.48 лв</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="upgrade" value="Visibility & Discovery">
+                                    <span>Visibility & Discovery - 100 € / 195.58 лв</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="upgrade" value="Commerce & Payments">
+                                    <span>Commerce & Payments - 200 € / 391.17 лв</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="upgrade" value="Logistics & Automation">
+                                    <span>Logistics & Automation - 150 € / 293.37 лв</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="upgrade" value="Security & Protection">
+                                    <span>Security & Protection - 100 € / 195.58 лв</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="upgrade" value="Conversion Optimization">
+                                    <span>Conversion Optimization - 150 € / 293.37 лв</span>
+                                </label>
+                            </div>
+                            <div class="dropdown-group">
+                                <div class="dropdown-group-label">Additional Services</div>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="upgrade" value="Website Migration">
+                                    <span>Website Migration - 200 € / 391.17 лв</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="upgrade" value="Site Audit & Recommendations">
+                                    <span>Site Audit & Recommendations - 50 € / 97.79 лв</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="upgrade" value="Bug Fixing">
+                                    <span>Bug Fixing - 40 € / 78.23 лв</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="upgrade" value="WooCommerce Setup">
+                                    <span>WooCommerce Setup - 250 € / 488.96 лв</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="upgrade" value="Website Redesign/Refresh">
+                                    <span>Website Redesign/Refresh - 300 € / 586.75 лв</span>
+                                </label>
+                            </div>
+                            <div class="dropdown-group">
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="upgrade" value="Other">
+                                    <span>Other</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -1312,12 +1501,57 @@
         window.addEventListener('scroll', updateActiveNav);
         updateActiveNav(); // Set initial active state
 
+        // Custom Checkbox Dropdown Functionality
+        const upgradeDropdown = document.getElementById('upgradeDropdown');
+        const upgradeTrigger = document.getElementById('upgradeTrigger');
+        const upgradeContent = document.getElementById('upgradeContent');
+        const upgradeSelected = document.getElementById('upgradeSelected');
+        const upgradePlaceholder = upgradeTrigger.querySelector('.dropdown-placeholder');
+        const upgradeCheckboxes = document.querySelectorAll('input[name="upgrade"]');
+
+        // Toggle dropdown
+        upgradeTrigger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            upgradeTrigger.classList.toggle('active');
+            upgradeContent.classList.toggle('show');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!upgradeDropdown.contains(e.target)) {
+                upgradeTrigger.classList.remove('active');
+                upgradeContent.classList.remove('show');
+            }
+        });
+
+        // Update selected text when checkboxes change
+        function updateSelectedText() {
+            const checked = Array.from(upgradeCheckboxes).filter(cb => cb.checked);
+            if (checked.length === 0) {
+                upgradePlaceholder.style.display = 'inline';
+                upgradeSelected.classList.remove('has-selection');
+                upgradeSelected.textContent = '';
+            } else {
+                upgradePlaceholder.style.display = 'none';
+                upgradeSelected.classList.add('has-selection');
+                if (checked.length === 1) {
+                    upgradeSelected.textContent = checked[0].closest('.checkbox-option').querySelector('span').textContent.split(' - ')[0];
+                } else {
+                    upgradeSelected.textContent = `${checked.length} services selected`;
+                }
+            }
+        }
+
+        // Listen to checkbox changes
+        upgradeCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updateSelectedText);
+        });
+
         // Handle Request buttons on upgrade cards
         document.querySelectorAll('.upgrade-request-btn').forEach(button => {
             button.addEventListener('click', function() {
                 const upgradeName = this.getAttribute('data-upgrade');
                 const contactForm = document.getElementById('contact-form');
-                const upgradeSelect = document.getElementById('upgrade');
                 
                 // Scroll to contact form
                 const headerOffset = 80;
@@ -1329,18 +1563,17 @@
                     behavior: 'smooth'
                 });
 
-                // Preselect the upgrade after a short delay (to ensure form is visible)
+                // Check the corresponding checkbox after a short delay
                 setTimeout(() => {
-                    if (upgradeSelect) {
-                        upgradeSelect.value = upgradeName;
-                        // Trigger focus for better UX
-                        upgradeSelect.focus();
-                        // Add a subtle highlight effect
-                        upgradeSelect.style.borderColor = 'var(--electric-purple)';
-                        upgradeSelect.style.boxShadow = '0 0 0 3px rgba(139, 92, 246, 0.3)';
-                        setTimeout(() => {
-                            upgradeSelect.style.boxShadow = '';
-                        }, 2000);
+                    const checkbox = Array.from(upgradeCheckboxes).find(cb => cb.value === upgradeName);
+                    if (checkbox) {
+                        checkbox.checked = true;
+                        updateSelectedText();
+                        // Open dropdown to show selection
+                        upgradeTrigger.classList.add('active');
+                        upgradeContent.classList.add('show');
+                        // Highlight the checked option
+                        checkbox.closest('.checkbox-option').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                     }
                 }, 500);
             });
@@ -1365,11 +1598,22 @@
 
             try {
                 // Send form data to Node.js backend
+                const checkedUpgrades = Array.from(upgradeCheckboxes)
+                    .filter(cb => cb.checked)
+                    .map(cb => cb.value);
+                
+                if (checkedUpgrades.length === 0) {
+                    showMessage('Please select at least one service or upgrade.', 'error');
+                    submitButton.disabled = false;
+                    submitButton.textContent = originalButtonText;
+                    return;
+                }
+                
                 const formDataObj = {
                     name: formData.get('name'),
                     email: formData.get('email'),
                     website: formData.get('website'),
-                    upgrade: formData.get('upgrade'),
+                    upgrade: checkedUpgrades,
                     message: formData.get('message')
                 };
 
@@ -1419,15 +1663,17 @@
         window.addEventListener('DOMContentLoaded', function() {
             const urlParams = new URLSearchParams(window.location.search);
             const upgradeParam = urlParams.get('upgrade');
-            const upgradeSelect = document.getElementById('upgrade');
             
-            if (upgradeParam && upgradeSelect) {
+            if (upgradeParam) {
                 // Decode the upgrade name (in case it has special characters)
                 const decodedUpgrade = decodeURIComponent(upgradeParam);
-                upgradeSelect.value = decodedUpgrade;
-                
-                // Scroll to form if upgrade is preselected
-                if (upgradeSelect.value) {
+                // Find and check the checkbox
+                const checkbox = Array.from(upgradeCheckboxes).find(cb => cb.value === decodedUpgrade);
+                if (checkbox) {
+                    checkbox.checked = true;
+                    updateSelectedText();
+                    
+                    // Scroll to form if upgrade is preselected
                     setTimeout(() => {
                         const contactForm = document.getElementById('contact-form');
                         const headerOffset = 80;
