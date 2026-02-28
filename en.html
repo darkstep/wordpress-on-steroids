@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,7 +44,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: 
+            background:
                 radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.3) 0%, transparent 50%),
                 radial-gradient(circle at 80% 70%, rgba(167, 139, 250, 0.25) 0%, transparent 50%),
                 radial-gradient(circle at 40% 80%, rgba(139, 92, 246, 0.28) 0%, transparent 50%);
@@ -53,9 +54,19 @@
         }
 
         @keyframes backgroundFloat {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -30px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(30px, -30px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(-20px, 20px) scale(0.9);
+            }
         }
 
         /* Grid Pattern Overlay */
@@ -66,7 +77,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
+            background-image:
                 linear-gradient(rgba(139, 92, 246, 0.08) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(139, 92, 246, 0.08) 1px, transparent 1px);
             background-size: 50px 50px;
@@ -132,8 +143,13 @@
         }
 
         @keyframes logoShine {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
         }
 
         .logo-text {
@@ -361,7 +377,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: 
+            background:
                 radial-gradient(circle at 30% 40%, rgba(139, 92, 246, 0.35) 0%, transparent 50%),
                 radial-gradient(circle at 70% 60%, rgba(167, 139, 250, 0.3) 0%, transparent 50%);
             pointer-events: none;
@@ -369,8 +385,17 @@
         }
 
         @keyframes heroPulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.1); }
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: scale(1.1);
+            }
         }
 
         /* Floating Purple Orbs */
@@ -389,9 +414,19 @@
         }
 
         @keyframes floatOrb {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(-50px, 50px) scale(1.2); }
-            66% { transform: translate(50px, -30px) scale(0.8); }
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(-50px, 50px) scale(1.2);
+            }
+
+            66% {
+                transform: translate(50px, -30px) scale(0.8);
+            }
         }
 
         .hero-content {
@@ -486,7 +521,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: 
+            background:
                 radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.2) 0%, transparent 40%),
                 radial-gradient(circle at 90% 80%, rgba(167, 139, 250, 0.18) 0%, transparent 40%);
             pointer-events: none;
@@ -715,7 +750,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: 
+            background:
                 radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.28) 0%, transparent 50%),
                 radial-gradient(circle at 80% 70%, rgba(167, 139, 250, 0.25) 0%, transparent 50%);
             pointer-events: none;
@@ -763,7 +798,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: 
+            background:
                 radial-gradient(circle at 30% 20%, rgba(139, 92, 246, 0.2) 0%, transparent 50%),
                 radial-gradient(circle at 70% 80%, rgba(167, 139, 250, 0.18) 0%, transparent 50%);
             pointer-events: none;
@@ -1087,6 +1122,229 @@
             border-radius: 2px;
         }
 
+        /* Hourly Rates Pricing Section */
+        .pricing-section {
+            background: linear-gradient(135deg, var(--black) 0%, var(--charcoal) 100%);
+            padding: 100px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pricing-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 40%, rgba(139, 92, 246, 0.25) 0%, transparent 50%),
+                radial-gradient(circle at 80% 60%, rgba(167, 139, 250, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pricing-card {
+            background: var(--dark-grey);
+            border-radius: 16px;
+            padding: 40px 30px;
+            border: 1px solid rgba(139, 92, 246, 0.25);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--electric-purple), var(--purple-glow));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--electric-purple);
+            box-shadow: 0 15px 50px rgba(139, 92, 246, 0.35);
+        }
+
+        .pricing-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--electric-purple);
+            box-shadow: 0 10px 40px rgba(139, 92, 246, 0.3);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-8px);
+            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.45);
+        }
+
+        .pricing-card.featured::before {
+            transform: scaleX(1);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: linear-gradient(135deg, var(--electric-purple), var(--purple-glow));
+            color: white;
+            padding: 6px 40px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transform: rotate(45deg);
+        }
+
+        .pricing-tier-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .pricing-tier-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+
+        .pricing-amount {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--electric-purple), var(--purple-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 4px;
+            line-height: 1.2;
+        }
+
+        .pricing-amount span {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .pricing-period {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .pricing-divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--electric-purple), transparent);
+            margin: 0 auto 24px;
+        }
+
+        .pricing-timeline {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .pricing-timeline-icon {
+            color: var(--electric-purple);
+            margin-right: 6px;
+        }
+
+        .pricing-description {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+
+        .pricing-cta {
+            display: inline-block;
+            width: 100%;
+            padding: 14px 24px;
+            background: linear-gradient(135deg, var(--electric-purple) 0%, var(--purple-glow) 100%);
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+            text-align: center;
+        }
+
+        .pricing-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(139, 92, 246, 0.6);
+        }
+
+        .pricing-cta.outline {
+            background: transparent;
+            border: 2px solid var(--electric-purple);
+            color: var(--electric-purple);
+            box-shadow: none;
+        }
+
+        .pricing-cta.outline:hover {
+            background: rgba(139, 92, 246, 0.1);
+        }
+
+        /* Hourly Inquiry Form */
+        .hourly-form-section {
+            background: var(--charcoal);
+            padding: 100px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hourly-form-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 40% 30%, rgba(139, 92, 246, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 60% 70%, rgba(167, 139, 250, 0.18) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hourly-form-wrapper {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero {
@@ -1099,6 +1357,24 @@
             }
 
             .upgrades-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .pricing-card.featured:hover {
+                transform: translateY(-8px);
+            }
+
+            .form-row {
                 grid-template-columns: 1fr;
             }
 
@@ -1156,6 +1432,7 @@
     <!-- EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
+
 <body>
     <!-- Header with Logo -->
     <header>
@@ -1175,6 +1452,7 @@
                 <a href="#hero">Home</a>
                 <a href="#upgrades">Upgrades</a>
                 <a href="#additional-services">Services</a>
+                <a href="#pricing">Pricing</a>
                 <a href="#done-for-you">How it works</a>
                 <a href="#contact-form">Contact</a>
                 <div class="language-switcher">
@@ -1189,6 +1467,7 @@
                 <a href="#hero">Home</a>
                 <a href="#upgrades">Upgrades</a>
                 <a href="#additional-services">Services</a>
+                <a href="#pricing">Pricing</a>
                 <a href="#done-for-you">How it works</a>
                 <a href="#contact-form">Contact</a>
                 <div class="language-switcher">
@@ -1213,7 +1492,7 @@
         <div class="container">
             <h2 class="section-title">Professional Upgrades Catalog</h2>
             <p class="section-subtitle">Choose the improvements that will drive real results for your business</p>
-            
+
             <div class="upgrades-grid">
                 <!-- Performance Upgrade -->
                 <div class="upgrade-card">
@@ -1319,14 +1598,16 @@
                 <div class="upgrade-card">
                     <div class="upgrade-icon">📈</div>
                     <h3>Conversion Optimization</h3>
-                    <p>Transform casual visitors into loyal customers with strategic design and functionality improvements.</p>
+                    <p>Transform casual visitors into loyal customers with strategic design and functionality
+                        improvements.</p>
                     <ul>
                         <li>Landing Page Optimization</li>
                         <li>Call-to-Action Enhancement</li>
                         <li>User Experience Audit & Fixes</li>
                     </ul>
                     <div class="upgrade-benefit">
-                        <strong>Result:</strong> Turn more traffic into sales with a site that guides visitors to action.
+                        <strong>Result:</strong> Turn more traffic into sales with a site that guides visitors to
+                        action.
                     </div>
                     <div class="upgrade-price">
                         <div class="upgrade-price-amount">150 € / 293.37 лв</div>
@@ -1343,13 +1624,14 @@
         <div class="container">
             <h2 class="section-title">Additional Professional Services</h2>
             <p class="section-subtitle">Custom solutions tailored to your specific needs</p>
-            
+
             <div class="upgrades-grid">
                 <!-- Website Migration -->
                 <div class="upgrade-card">
                     <div class="upgrade-icon">🚀</div>
                     <h3>Website Migration</h3>
-                    <p>Seamlessly move your WordPress site between hosting providers or domains with zero downtime and no data loss.</p>
+                    <p>Seamlessly move your WordPress site between hosting providers or domains with zero downtime and
+                        no data loss.</p>
                     <ul>
                         <li>Hosting Migration</li>
                         <li>Domain Transfer</li>
@@ -1358,7 +1640,8 @@
                         <li>Post-Migration Testing</li>
                     </ul>
                     <div class="upgrade-benefit">
-                        <strong>Result:</strong> Smooth transition with all your content, settings, and functionality intact.
+                        <strong>Result:</strong> Smooth transition with all your content, settings, and functionality
+                        intact.
                     </div>
                     <div class="upgrade-price">
                         <div class="upgrade-price-amount">200 € / 391.17 лв</div>
@@ -1371,7 +1654,8 @@
                 <div class="upgrade-card">
                     <div class="upgrade-icon">🔬</div>
                     <h3>Site Audit & Recommendations</h3>
-                    <p>Get a comprehensive analysis of your WordPress site with actionable recommendations for improvements.</p>
+                    <p>Get a comprehensive analysis of your WordPress site with actionable recommendations for
+                        improvements.</p>
                     <ul>
                         <li>Performance Analysis</li>
                         <li>Security Assessment</li>
@@ -1393,7 +1677,8 @@
                 <div class="upgrade-card">
                     <div class="upgrade-icon">🔧</div>
                     <h3>Bug Fixing</h3>
-                    <p>Resolve technical issues, errors, and conflicts that are preventing your site from working properly.</p>
+                    <p>Resolve technical issues, errors, and conflicts that are preventing your site from working
+                        properly.</p>
                     <ul>
                         <li>Error Diagnosis</li>
                         <li>Plugin/Theme Conflicts</li>
@@ -1415,7 +1700,8 @@
                 <div class="upgrade-card">
                     <div class="upgrade-icon">🛒</div>
                     <h3>WooCommerce Setup</h3>
-                    <p>Transform your WordPress site into a fully functional online store with professional e-commerce capabilities.</p>
+                    <p>Transform your WordPress site into a fully functional online store with professional e-commerce
+                        capabilities.</p>
                     <ul>
                         <li>WooCommerce Installation & Configuration</li>
                         <li>Payment Gateway Setup</li>
@@ -1437,7 +1723,8 @@
                 <div class="upgrade-card">
                     <div class="upgrade-icon">🎨</div>
                     <h3>Website Redesign/Refresh</h3>
-                    <p>Give your site a modern, professional makeover that reflects your brand and improves user experience.</p>
+                    <p>Give your site a modern, professional makeover that reflects your brand and improves user
+                        experience.</p>
                     <ul>
                         <li>Visual Design Update</li>
                         <li>Layout Modernization</li>
@@ -1446,7 +1733,8 @@
                         <li>User Experience Enhancement</li>
                     </ul>
                     <div class="upgrade-benefit">
-                        <strong>Result:</strong> A fresh, modern website that better represents your brand and engages visitors.
+                        <strong>Result:</strong> A fresh, modern website that better represents your brand and engages
+                        visitors.
                     </div>
                     <div class="upgrade-price">
                         <div class="upgrade-price-amount">300 € / 586.75 лв</div>
@@ -1459,7 +1747,8 @@
                 <div class="upgrade-card">
                     <div class="upgrade-icon">🌐</div>
                     <h3>WordPress Website Creation</h3>
-                    <p>Get a complete, professional WordPress website built from scratch tailored to your business needs.</p>
+                    <p>Get a complete, professional WordPress website built from scratch tailored to your business
+                        needs.</p>
                     <ul>
                         <li>Custom Design & Development</li>
                         <li>Content Management Setup</li>
@@ -1468,7 +1757,8 @@
                         <li>Basic Training Included</li>
                     </ul>
                     <div class="upgrade-benefit">
-                        <strong>Result:</strong> A fully functional, professional website ready to represent your business online.
+                        <strong>Result:</strong> A fully functional, professional website ready to represent your
+                        business online.
                     </div>
                     <div class="upgrade-price">
                         <div class="upgrade-price-amount">500 € / 977.92 лв</div>
@@ -1480,13 +1770,140 @@
         </div>
     </section>
 
+    <!-- Hourly Rates Pricing Section -->
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <h2 class="section-title">Hourly Rates</h2>
+            <p class="section-subtitle">Need ongoing WordPress support? Choose the rate that fits your timeline and
+                budget.</p>
+
+            <div class="pricing-grid">
+                <!-- Standard Rate -->
+                <div class="pricing-card">
+                    <div class="pricing-tier-icon">🕐</div>
+                    <div class="pricing-tier-name">Standard</div>
+                    <div class="pricing-amount">€30<span>/hr</span></div>
+                    <div class="pricing-period">per hour</div>
+                    <div class="pricing-divider"></div>
+                    <div class="pricing-timeline">
+                        <span class="pricing-timeline-icon">📅</span> Start within 1 month
+                    </div>
+                    <p class="pricing-description">
+                        Perfect for non-urgent tasks and ongoing maintenance. We'll begin working on your request within
+                        one month of receiving it — ideal for planned improvements and batch tasks.
+                    </p>
+                    <a href="#hourly-inquiry" class="pricing-cta outline" data-rate="Standard - €30/hr">Get Started</a>
+                </div>
+
+                <!-- Priority Rate -->
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Popular</div>
+                    <div class="pricing-tier-icon">⚡</div>
+                    <div class="pricing-tier-name">Priority</div>
+                    <div class="pricing-amount">€40<span>/hr</span></div>
+                    <div class="pricing-period">per hour</div>
+                    <div class="pricing-divider"></div>
+                    <div class="pricing-timeline">
+                        <span class="pricing-timeline-icon">📅</span> Start within 2 weeks
+                    </div>
+                    <p class="pricing-description">
+                        For when you need work done soon. We guarantee to start within 2 weeks, depending on the volume
+                        of requests we're handling — the best balance of speed and value.
+                    </p>
+                    <a href="#hourly-inquiry" class="pricing-cta" data-rate="Priority - €40/hr">Get Started</a>
+                </div>
+
+                <!-- Express Rate -->
+                <div class="pricing-card">
+                    <div class="pricing-tier-icon">🚀</div>
+                    <div class="pricing-tier-name">Express</div>
+                    <div class="pricing-amount">€50<span>/hr</span></div>
+                    <div class="pricing-period">per hour</div>
+                    <div class="pricing-divider"></div>
+                    <div class="pricing-timeline">
+                        <span class="pricing-timeline-icon">📅</span> Start within 3 business days
+                    </div>
+                    <p class="pricing-description">
+                        The fastest turnaround for urgent needs. We'll start working on your tasks within 3 business
+                        days — perfect for time-sensitive projects and critical fixes.
+                    </p>
+                    <a href="#hourly-inquiry" class="pricing-cta outline" data-rate="Express - €50/hr">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hourly Inquiry Form -->
+    <section id="hourly-inquiry" class="hourly-form-section">
+        <div class="hourly-form-wrapper">
+            <h2 class="section-title">Request Hourly Support</h2>
+            <p class="section-subtitle">Tell us about your needs and we'll get back to you with a plan.</p>
+
+            <form class="contact-form" id="hourlyForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="hourly-name">Your Name *</label>
+                        <input type="text" id="hourly-name" name="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="hourly-email">Your Email *</label>
+                        <input type="email" id="hourly-email" name="email" placeholder="john@example.com" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="hourly-website">Your Website (optional)</label>
+                    <input type="text" id="hourly-website" name="website" placeholder="https://yoursite.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="hourly-rate">Preferred Rate *</label>
+                    <select id="hourly-rate" name="rate" required>
+                        <option value="" disabled selected>Select your preferred rate...</option>
+                        <option value="Standard - €30/hr (start within 1 month)">Standard — €30/hr (start within 1
+                            month)</option>
+                        <option value="Priority - €40/hr (start within 2 weeks)">Priority — €40/hr (start within 2
+                            weeks)</option>
+                        <option value="Express - €50/hr (start within 3 business days)">Express — €50/hr (start within 3
+                            business days)</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="hourly-hours">Hours Needed *</label>
+                        <input type="text" id="hourly-hours" name="hours"
+                            placeholder="e.g. 10 hours/week or 20 hours/month" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="hourly-duration">For How Long *</label>
+                        <input type="text" id="hourly-duration" name="duration" placeholder="e.g. 3 months, ongoing"
+                            required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="hourly-message">Describe Your Tasks *</label>
+                    <textarea id="hourly-message" name="message"
+                        placeholder="Tell us what kind of WordPress tasks you need help with..." required></textarea>
+                </div>
+
+                <button type="submit" class="form-submit">Send Inquiry</button>
+
+                <div class="form-message" id="hourlyFormMessage"></div>
+            </form>
+        </div>
+    </section>
+
     <!-- Done-For-You Section -->
     <section id="done-for-you" class="done-for-you">
         <div class="container">
             <div class="promise-box">
                 <h3>The "Done-For-You" Promise</h3>
-                <p>You don't need to lift a finger. I handle all the technical implementation, testing, and deployment. No coding knowledge required. No time wasted on tutorials. Just tell me what you need, and I'll make it happen.</p>
-                
+                <p>You don't need to lift a finger. I handle all the technical implementation, testing, and deployment.
+                    No coding knowledge required. No time wasted on tutorials. Just tell me what you need, and I'll make
+                    it happen.</p>
+
                 <div class="promise-features">
                     <div class="promise-feature">
                         <strong>Zero Technical Skills Needed</strong>
@@ -1509,7 +1926,8 @@
     <section id="cta" class="bottom-cta">
         <div class="container">
             <h2>Ready to Give Your Website the Muscle It Needs?</h2>
-            <p>Choose a package that fits your goals, or let's discuss a custom solution tailored to your specific needs.</p>
+            <p>Choose a package that fits your goals, or let's discuss a custom solution tailored to your specific
+                needs.</p>
             <div class="cta-buttons">
                 <a href="#upgrades" class="cta-button">Pick a Package</a>
                 <a href="#contact-form" class="cta-button secondary">Custom Consultation</a>
@@ -1521,8 +1939,9 @@
     <section id="contact-form" class="contact-form-section">
         <div class="contact-form-wrapper">
             <h2 class="section-title">Get In Touch</h2>
-            <p class="section-subtitle">Ready to transform your WordPress site? Send me a message and let's discuss your project.</p>
-            
+            <p class="section-subtitle">Ready to transform your WordPress site? Send me a message and let's discuss your
+                project.</p>
+
             <form class="contact-form" id="contactForm">
                 <div class="form-group">
                     <label for="name">Your Name *</label>
@@ -1614,11 +2033,13 @@
 
                 <div class="form-group">
                     <label for="message">Your Message *</label>
-                    <textarea id="message" name="message" placeholder="Tell me about your WordPress site and what improvements you're looking for..." required></textarea>
+                    <textarea id="message" name="message"
+                        placeholder="Tell me about your WordPress site and what improvements you're looking for..."
+                        required></textarea>
                 </div>
 
                 <button type="submit" class="form-submit">Send Message</button>
-                
+
                 <div class="form-message" id="formMessage"></div>
             </form>
         </div>
@@ -1627,7 +2048,9 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 WordPress on Steroids. Transform your site. Transform your business. | Powered by <a href="https://ascend.bg" target="_blank" rel="noopener" style="color: var(--electric-purple); text-decoration: none;">Ascend</a></p>
+            <p>&copy; 2026 WordPress on Steroids. Transform your site. Transform your business. | Powered by <a
+                    href="https://ascend.bg" target="_blank" rel="noopener"
+                    style="color: var(--electric-purple); text-decoration: none;">Ascend</a></p>
         </div>
     </footer>
 
@@ -1726,14 +2149,14 @@
         const upgradeCheckboxes = document.querySelectorAll('input[name="upgrade"]');
 
         // Toggle dropdown
-        upgradeTrigger.addEventListener('click', function(e) {
+        upgradeTrigger.addEventListener('click', function (e) {
             e.stopPropagation();
             upgradeTrigger.classList.toggle('active');
             upgradeContent.classList.toggle('show');
         });
 
         // Close dropdown when clicking outside
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
             if (!upgradeDropdown.contains(e.target)) {
                 upgradeTrigger.classList.remove('active');
                 upgradeContent.classList.remove('show');
@@ -1765,10 +2188,10 @@
 
         // Handle Request buttons on upgrade cards
         document.querySelectorAll('.upgrade-request-btn').forEach(button => {
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function () {
                 const upgradeName = this.getAttribute('data-upgrade');
                 const contactForm = document.getElementById('contact-form');
-                
+
                 // Scroll to contact form
                 const headerOffset = 80;
                 const elementPosition = contactForm.getBoundingClientRect().top;
@@ -1799,22 +2222,22 @@
         const EMAILJS_SERVICE_ID = 'service_yujul1k';
         const EMAILJS_TEMPLATE_ID = 'template_k8icd58';
         const EMAILJS_PUBLIC_KEY = 'PvfmM57-5e8m8oE_X';
-        
+
         // Initialize EmailJS
-        (function() {
+        (function () {
             emailjs.init(EMAILJS_PUBLIC_KEY);
         })();
-        
+
         const contactForm = document.getElementById('contactForm');
         const formMessage = document.getElementById('formMessage');
 
-        contactForm.addEventListener('submit', async function(e) {
+        contactForm.addEventListener('submit', async function (e) {
             e.preventDefault();
-            
+
             const formData = new FormData(contactForm);
             const submitButton = contactForm.querySelector('.form-submit');
             const originalButtonText = submitButton.textContent;
-            
+
             // Disable submit button
             submitButton.disabled = true;
             submitButton.textContent = 'Sending...';
@@ -1826,14 +2249,14 @@
                 const checkedUpgrades = Array.from(upgradeCheckboxes)
                     .filter(cb => cb.checked)
                     .map(cb => cb.value);
-                
+
                 if (checkedUpgrades.length === 0) {
                     showMessage('Please select at least one service or upgrade.', 'error');
                     submitButton.disabled = false;
                     submitButton.textContent = originalButtonText;
                     return;
                 }
-                
+
                 // Price mapping for all services
                 const servicePrices = {
                     'Performance Boost': '125 € / 244.48 лв',
@@ -1850,13 +2273,13 @@
                     'WordPress Website Creation': '500 € / 977.92 лв',
                     'Other': 'Custom quote'
                 };
-                
+
                 // Format services with prices
                 const servicesWithPrices = checkedUpgrades.map(service => {
                     const price = servicePrices[service] || 'Price on request';
                     return `${service} - ${price}`;
                 }).join('\n');
-                
+
                 // Calculate total price (excluding "Other")
                 const totalPrice = checkedUpgrades
                     .filter(service => service !== 'Other')
@@ -1868,7 +2291,7 @@
                         }
                         return total;
                     }, 0);
-                
+
                 // Prepare template parameters for EmailJS
                 const templateParams = {
                     from_name: formData.get('name'),
@@ -1906,10 +2329,10 @@
             formMessage.textContent = text;
             formMessage.className = `form-message ${type}`;
             formMessage.style.display = 'block';
-            
+
             // Scroll to message
             formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            
+
             // Auto-hide success message after 5 seconds
             if (type === 'success') {
                 setTimeout(() => {
@@ -1919,10 +2342,10 @@
         }
 
         // Handle URL parameters for preselected upgrade
-        window.addEventListener('DOMContentLoaded', function() {
+        window.addEventListener('DOMContentLoaded', function () {
             const urlParams = new URLSearchParams(window.location.search);
             const upgradeParam = urlParams.get('upgrade');
-            
+
             if (upgradeParam) {
                 // Decode the upgrade name (in case it has special characters)
                 const decodedUpgrade = decodeURIComponent(upgradeParam);
@@ -1931,7 +2354,7 @@
                 if (checkbox) {
                     checkbox.checked = true;
                     updateSelectedText();
-                    
+
                     // Scroll to form if upgrade is preselected
                     setTimeout(() => {
                         const contactForm = document.getElementById('contact-form');
@@ -1946,6 +2369,101 @@
                 }
             }
         });
+
+        // Hourly Inquiry Form Handling with EmailJS
+        const hourlyForm = document.getElementById('hourlyForm');
+        const hourlyFormMessage = document.getElementById('hourlyFormMessage');
+
+        if (hourlyForm) {
+            hourlyForm.addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                const formData = new FormData(hourlyForm);
+                const submitButton = hourlyForm.querySelector('.form-submit');
+                const originalButtonText = submitButton.textContent;
+
+                submitButton.disabled = true;
+                submitButton.textContent = 'Sending...';
+                hourlyFormMessage.className = 'form-message';
+                hourlyFormMessage.style.display = 'none';
+
+                try {
+                    const templateParams = {
+                        from_name: formData.get('name'),
+                        from_email: formData.get('email'),
+                        website: formData.get('website') || 'Not provided',
+                        services: `Hourly Support Request\nRate: ${formData.get('rate')}\nHours Needed: ${formData.get('hours')}\nDuration: ${formData.get('duration')}`,
+                        total_price: formData.get('rate'),
+                        message: formData.get('message'),
+                        subject: `Hourly Support Inquiry - ${formData.get('rate')}`
+                    };
+
+                    await emailjs.send(
+                        EMAILJS_SERVICE_ID,
+                        EMAILJS_TEMPLATE_ID,
+                        templateParams
+                    );
+
+                    showHourlyMessage('Thank you! Your inquiry has been sent successfully. We\'ll get back to you soon with a plan.', 'success');
+                    hourlyForm.reset();
+
+                } catch (error) {
+                    console.error('Hourly form submission error:', error);
+                    showHourlyMessage('Sorry, there was an error sending your inquiry. Please try again or contact us directly.', 'error');
+                } finally {
+                    submitButton.disabled = false;
+                    submitButton.textContent = originalButtonText;
+                }
+            });
+        }
+
+        function showHourlyMessage(text, type) {
+            hourlyFormMessage.textContent = text;
+            hourlyFormMessage.className = `form-message ${type}`;
+            hourlyFormMessage.style.display = 'block';
+
+            hourlyFormMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+            if (type === 'success') {
+                setTimeout(() => {
+                    hourlyFormMessage.style.display = 'none';
+                }, 5000);
+            }
+        }
+
+        // Handle pricing card CTA buttons
+        document.querySelectorAll('.pricing-cta').forEach(button => {
+            button.addEventListener('click', function (e) {
+                e.preventDefault();
+                const rate = this.getAttribute('data-rate');
+                const hourlyRateSelect = document.getElementById('hourly-rate');
+                const hourlyInquiry = document.getElementById('hourly-inquiry');
+
+                // Scroll to hourly inquiry form
+                const headerOffset = 80;
+                const elementPosition = hourlyInquiry.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+
+                // Pre-select the matching rate option
+                setTimeout(() => {
+                    if (hourlyRateSelect) {
+                        const options = hourlyRateSelect.options;
+                        for (let i = 0; i < options.length; i++) {
+                            if (options[i].value.includes(rate.split(' - ')[1] || rate)) {
+                                hourlyRateSelect.selectedIndex = i;
+                                break;
+                            }
+                        }
+                    }
+                }, 500);
+            });
+        });
     </script>
 </body>
+
 </html>
